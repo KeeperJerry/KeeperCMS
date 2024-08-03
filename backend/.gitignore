@@ -1,0 +1,8 @@
+# Dev
+node_modules
+
+# Deployment
+deploy
+logs
+keys
+.env

@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "main": "deploy/index.js",
+  "scripts": {
+    "start": "npx ts-node src/index.ts",
+    "build": "npx tsc --build",
+    "start:linux": "npx tsc && node .",
+    "start:prod": "node ."
+  },
+  "author": "KeeperJerry",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.25.2",
+    "moment-timezone": "^0.5.43",
+    "mysql2": "^3.6.5",
+    "typeorm": "^0.3.17",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.5"
+  }
+}
