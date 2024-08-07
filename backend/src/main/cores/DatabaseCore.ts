@@ -6,6 +6,7 @@ import LoggerUtils from '../utils/LoggerUtils';
 import UsersEntity from '../orm/entity/UsersEntity';
 import PlayersEntity from '../orm/entity/MCPlayersEntity';
 import MCSessionsEntity from '../orm/entity/MCSessionsEntity';
+import GeneralConfig from '../configs/GeneralConfig';
 
 /**
  * Класс с интерфейсом базы данных
@@ -19,7 +20,7 @@ export default class DatabaseCore {
         password: SQLConfigs.password,
         database: SQLConfigs.database,
         synchronize: SQLConfigs.sync,
-        logging: true, //GeneralConfig.debug
+        logging: GeneralConfig.debug,
         entities: [
             MCSessionsEntity,
             PlayersEntity,

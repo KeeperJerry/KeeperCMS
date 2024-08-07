@@ -12,6 +12,7 @@ import AuthenticateComponent from "../components/injector/authserver/Authenticat
 import InformationComponent from "../components/injector/InformationComponent";
 import RobotsComponent from "../components/root/RobotsComponent";
 import Generate204Component from "../components/root/Generate204Component";
+import MainInfoComponent from "../components/root/MainInfoComponent";
 
 /**
  * Сервис управления роутингом
@@ -36,6 +37,7 @@ export default class RoutingService {
     private static root(instance: FastifyInstance, options: any, done: HookHandlerDoneFunction) {
         instance.options('/generate_204', Generate204Component.get);
         instance.get('/robots.txt', RobotsComponent.out, RobotsComponent.get);
+        instance.get('/', MainInfoComponent.out, MainInfoComponent.get)
         done();
     }
 
