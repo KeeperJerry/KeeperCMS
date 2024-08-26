@@ -6,7 +6,7 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-export default function HeaderLayot() {
+export default function HeaderComponent() {
     return(
         <>
             {/* Костыль */}

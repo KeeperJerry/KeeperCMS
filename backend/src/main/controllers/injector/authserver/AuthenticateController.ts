@@ -19,7 +19,7 @@ import ConvertUtils from "../../../utils/ConvertUtils";
 
 type CustomRequest = FastifyRequest<{ Body: LoginModel; }>;
 
-export default class AuthenticateComponent {
+export default class AuthenticateController {
     public static async get(request: CustomRequest, reply: FastifyReply) {
         const body : LoginModel = request.body;
         const su: SignUtils = new SignUtils();

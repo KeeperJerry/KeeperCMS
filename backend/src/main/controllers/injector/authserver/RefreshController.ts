@@ -10,7 +10,7 @@ import ConvertUtils from "../../../utils/ConvertUtils";
 
 type CustomRequest = FastifyRequest<{ Body: RefreshModel; }>;
 
-export default class RefreshComponent {
+export default class RefreshController {
     public static async get(request: CustomRequest, reply: FastifyReply) {
         const body : RefreshModel = request.body;
 

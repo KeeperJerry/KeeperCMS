@@ -9,7 +9,7 @@ import ConvertUtils from "../../../utils/ConvertUtils";
 
 type CustomRequest = FastifyRequest<{ Body: string[]; }>;
 
-export default class MCProfilesComponent {
+export default class MCProfilesController {
     public static async get(request: CustomRequest, reply: FastifyReply) {
         const data: string[] = request.body;
         LoggerUtils.DEBUG(`${data}`);

@@ -1,37 +1,37 @@
 import { Route, Routes } from "react-router-dom";
-import Error404Component from "../components/root/Error404Component";
-import MainComponent from "../components/root/MainComponent";
+import Error404Controller from "../controllers/root/Error404Controller";
+import MainController from "../controllers/root/MainController";
 import RouteModels from "../models/RouteModels";
-import LoginComponent from "../components/auth/LoginComponent";
-import RegisterComponent from "../components/auth/RegisterComponent";
-import AuthTemplate from "../components/auth/AuthTemplate";
-import ResetPassComponent from "../components/auth/ResetPassComponent";
+import LoginController from "../controllers/auth/LoginController";
+import RegisterController from "../controllers/auth/RegisterController";
+import AuthTemplate from "../controllers/auth/AuthTemplate";
+import ResetPassController from "../controllers/auth/ResetPassController";
 
 const routes: RouteModels[] = [
     { 
         path: '/auth/login',
         element: <AuthTemplate 
             title='Вход'
-            element={ <LoginComponent/> }
+            element={ <LoginController/> }
         />
     },{ 
         path: '/auth/register',
         element: <AuthTemplate 
             title='Регистрация'
-            element={ <RegisterComponent/> }
+            element={ <RegisterController/> }
         />
     },{ 
         path: '/auth/reset-password',
         element: <AuthTemplate 
             title='Восстановление'
-            element={ <ResetPassComponent/> }
+            element={ <ResetPassController/> }
         />
     },{ 
         path: '/',
-        element: <MainComponent/>
+        element: <MainController/>
     },{
         path: '*',
-        element: <Error404Component/>
+        element: <Error404Controller/>
     }
 ]
 

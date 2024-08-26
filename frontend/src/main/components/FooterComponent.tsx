@@ -2,7 +2,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
 
-export default function FooterLayout() {
+export default function FooterComponent() {
     return(
         <Typography
             variant="body2"

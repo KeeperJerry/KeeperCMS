@@ -8,7 +8,7 @@ import MCSessionsRepository from "../../../orm/repository/MCSessionsRepository";
 
 type CustomRequest = FastifyRequest<{ Body: ValidateModels; }>;
 
-export default class ValidateComponent {
+export default class ValidateController {
     public static async get(request: CustomRequest, reply: FastifyReply) {
         const { 
             accessToken, 

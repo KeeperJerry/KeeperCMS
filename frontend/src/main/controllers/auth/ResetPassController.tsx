@@ -7,7 +7,7 @@ import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-export default function ResetPassComponent() {
+export default function ResetPassController() {
     return(
         <>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

@@ -11,7 +11,7 @@ import MCPlayersRepository from "../../../orm/repository/MCPlayersRepository";
 
 type CustomRequest = FastifyRequest<{ Body: SignoutModel; }>;
 
-export default class SignOutComponent {
+export default class SignOutController {
     public static async get(request: CustomRequest, reply: FastifyReply) {
         const body : SignoutModel = request.body;
         const su: SignUtils = new SignUtils();

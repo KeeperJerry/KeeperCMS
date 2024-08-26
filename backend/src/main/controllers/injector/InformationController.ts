@@ -2,7 +2,7 @@ import { FastifyReply, FastifyRequest, RouteShorthandOptions } from "fastify";
 
 import AuthlibUtils from "../../utils/AuthlibUtils";
 
-export default class InformationComponent {
+export default class InformationController {
     public static async get(_: FastifyRequest, reply: FastifyReply) {
         reply.code(200);
         return AuthlibUtils.Status.get();

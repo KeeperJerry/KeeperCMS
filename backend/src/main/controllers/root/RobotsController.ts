@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest, RouteShorthandOptions } from 'fastify';
 
-export default class RobotsComponent {
+export default class RobotsController {
     public static async get(_: FastifyRequest, reply: FastifyReply) {
         reply.code(200);
         return 'User-agent: *\nDisallow: /';

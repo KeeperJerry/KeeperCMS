@@ -6,7 +6,7 @@ import Paper from "@mui/material/Paper";
 
 import AuthTemplateModels from "../../models/AuthTemplateModels";
 import bgImage from '../../../assets/bgAuth.png';
-import FooterLayout from "../../layouts/FooterLayout";
+import FooterComponent from "../../components/FooterComponent";
 
 export default function AuthTemplate(prop: AuthTemplateModels) {
     const title = prop.title;
@@ -53,7 +53,7 @@ export default function AuthTemplate(prop: AuthTemplateModels) {
                     { prop.element }
                 </Box>
 
-                <FooterLayout/>
+                <FooterComponent/>
             </Grid>
         </Grid>
     );

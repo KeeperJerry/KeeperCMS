@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-export default function Error404Component() {
+export default function Error404Controller() {
     useEffect(() => {
         document.title = 'Не найдено';
     }, []);

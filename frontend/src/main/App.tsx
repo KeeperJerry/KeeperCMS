@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 
-import HeaderLayot from './layouts/HeaderLayot';
+import HeaderComponent from './components/HeaderComponent';
 import NavigatorCore from "./cores/NavigatorCore";
 
 const theme = createTheme({
@@ -24,7 +24,7 @@ export default function App() {
     <main>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <HeaderLayot/>
+        <HeaderComponent/>
         <NavigatorCore/>
       </ThemeProvider>
     </main>

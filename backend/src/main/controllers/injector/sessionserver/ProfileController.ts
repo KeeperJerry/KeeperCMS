@@ -1,49 +1,55 @@
 import { FastifyReply, FastifyRequest, RouteShorthandOptions } from "fastify";
-import HasJoinedModels from "../../../models/injector/request/HasJoinedModels";
+
 import FastifyUtils from "../../../utils/FastifyUtils";
-import MCSessionsRepository from "../../../orm/repository/MCSessionsRepository";
+import MCPlayersEntity from "../../../orm/entity/MCPlayersEntity";
+import MCPlayersRepository from "../../../orm/repository/MCPlayersRepository";
 import AuthlibUtils from "../../../utils/AuthlibUtils";
 import LoggerUtils from "../../../utils/LoggerUtils";
-import MCSessionsEntity from "../../../orm/entity/MCSessionsEntity";
+import ConvertUtils from "../../../utils/ConvertUtils";
 
-type CustomRequest = FastifyRequest<{ Querystring: { query: HasJoinedModels }}>
-
-export default class HasJoinedComponent {
-    public static async get(request: CustomRequest, reply: FastifyReply) {
-        const { query } = request.query;
+export default class ProfileController {
+    public static async get(request: FastifyRequest, reply: FastifyReply) {
+        const unsigned: boolean = request.query[`unsigned`] == `true`;
+        let uuid: string = request.params[`uuid`]; // Заебал
 
         // Проверяем на критические переменные
-        if (
-            !query.username || query.username.length === 0 ||
-            !query.serverId || query.serverId.length === 0
-        ) {
+        if (!uuid || uuid.length === 0) {
             return FastifyUtils.Template.req(
                 403,
                 "IllegalArgumentException",
-                "[2201] Invalid argument",
+                "[2101] Invalid argument",
                 undefined
             );
         }
 
-        let db_session: MCSessionsEntity;
-        try {
-            db_session = await MCSessionsRepository.findOneBy({ serverId: query.serverId })
-        } catch (error) {
-            reply.code(500);
-            FastifyUtils.Error.catch(error, "2202");
-        }
-
-        if (!db_session) {
-            reply.code(403);
+        if (uuid.length === 32) {
+            uuid = ConvertUtils.toDashes(uuid)
+        } else {
             return FastifyUtils.Template.req(
                 403,
-                "Unauthorized",
-                "[2203] The request requires user authentication!",
+                "IllegalArgumentException",
+                "[2102] Invalid argument",
                 undefined
             );
         }
 
-        let db_player = db_session.playerUuid;
+        let db_player : MCPlayersEntity;
+        try {
+            db_player = await MCPlayersRepository.findOneBy({ id: uuid });
+        } catch (error) {
+            reply.code(500);
+            return FastifyUtils.Error.catch(error, "2103");
+        }
+
+        if (!db_player) {
+            reply.code(401);
+            return FastifyUtils.Template.req(
+                403, 
+                "Unauthorized",
+                "[2104] The request requires user authentication!",
+                undefined
+            );
+        }
 
         try {
             LoggerUtils.DEBUG(JSON.stringify(db_player));
@@ -54,7 +60,7 @@ export default class HasJoinedComponent {
                 db_player.hashSkin,
                 db_player.hashCloak,
                 db_player.typeSkin,
-                false
+                unsigned
             );
         } catch (error) {
             reply.code(500);

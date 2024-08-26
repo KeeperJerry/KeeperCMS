@@ -3,11 +3,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-export default function RegisterComponent() {
+export default function LoginController() {
     return(
         <>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -15,7 +17,7 @@ export default function RegisterComponent() {
             </Avatar>
 
             <Typography component="h1" variant="h5">
-                Регистрация
+                Авторизация
             </Typography>
 
             <Box 
@@ -44,14 +46,9 @@ export default function RegisterComponent() {
                     label="Пароль"
                 />
 
-                <TextField
-                    id="password2"
-                    type="password"
-                    name="password2"
-                    fullWidth
-                    margin="normal"
-                    required
-                    label="Еще раз пароль"
+                <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Запомнить устройство"
                 />
 
                 <Button
@@ -61,18 +58,18 @@ export default function RegisterComponent() {
                     sx={{ mt: 3, mb: 2 }}
                     //disabled={ isLoading }
                 >
-                    { `Зарегистрировать` }
+                    { `Войти` }
                 </Button>
-                
+
                 <Grid container>
                     <Grid item={true} xs>
-                        <RouterLink to="/auth/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            { `Есть аккаунт?` }
+                        <RouterLink to="/auth/reset-password" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            { `Забыли пароль?` }
                         </RouterLink>
                     </Grid>
                     <Grid item={true}>
-                        <RouterLink to="/auth/reset-password" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            { `Забыли пароль?` }
+                        <RouterLink to="/auth/register" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            { `Нет аккаунта?` }
                         </RouterLink>
                     </Grid>
                 </Grid>

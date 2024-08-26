@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-export default function MainComponent() {
+export default function MainController() {
     useEffect(() => {
         document.title = 'Главная';
     }, []);

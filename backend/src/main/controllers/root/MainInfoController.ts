@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest, RouteShorthandOptions } from 'fastify';
 import ProjectConfig from '../../configs/ProjectConfig';
 
-export default class MainInfoComponent {
+export default class MainInfoController {
     public static async get(_: FastifyRequest, reply: FastifyReply) {
         reply.code(200);
         reply.header("X-Authlib-Injector-API-Location","/injector/")
